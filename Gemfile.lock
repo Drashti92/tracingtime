@@ -131,6 +131,8 @@ GEM
     normalize-rails (3.0.3)
     orm_adapter (0.5.0)
     public_suffix (2.0.5)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -237,6 +239,7 @@ DEPENDENCIES
   gritter (= 1.2.0)
   jbuilder (~> 2.0)
   jquery-rails
+  pundit (~> 1.1)
   rails (= 4.2.5)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
