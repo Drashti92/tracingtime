@@ -22,6 +22,17 @@ describe 'navigate' do
                 post2 = FactoryGirl.build_stubbed(:second_post)
                 visit posts_path
                 expect(page).to have_content(/Rationale|content/)
+            end
+           
+           it 'has a scope so that only post creaters can see their posts' do
+            post1 = Post.create(date: Date.today, rationale: "asdf", user_id: @user.id )
+            post2 = Post.create(date: Date.today, rationale: "asdf", user_id: @user.id )
+            
+            other_user = User.create(first_name: 'Non', last_name: 'Authorized', email: "nonauth@example.com", password: "password", password_confirmation: "password")
+            post_from_other_user = Post.create(date: Date.today, rationale: "This post shoudnt be seen", user_id: other_user.id )
+        
+            visit posts_path
+            expect(page).to_not have_content(/This post shoudnt be seen/)
            end
     end
     
@@ -40,6 +51,8 @@ describe 'navigate' do
             it 'can be deleted' do
                 
                 @post = FactoryGirl.create(:post)
+                @post.update(user_id: @user.id)
+               
                 visit posts_path 
                 click_link ("delete_post_#{@post.id}_from_index")
                 expect(page.status_code).to eq(200)
@@ -97,7 +110,7 @@ describe 'navigate' do
             
             it 'cannot be edited by a non authorized user' do
                 logout(:user)
-                non_authorized_user = FactoryGirl.create(:non_authorized_user)
+                @non_authorized_user = FactoryGirl.create(:non_authorized_user)
                 login_as(@non_authorized_user, :scope => :user)
                 
                 visit edit_post_path(@edit_post)
