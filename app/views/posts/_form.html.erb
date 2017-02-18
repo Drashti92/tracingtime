@@ -5,6 +5,11 @@
       <%= js add_gritter(error, title: "Tracing Time Notifications", sticky: false, image: :error) %>
     <% end %>
   <% end %>
+  
+  <div class="form-group">
+    <%= f.label :overtime_request, class: "col-sm-2 control-label" %>
+    <%= f.text_field :overtime_request, class: "form-control" %>
+  </div>
 
   <div class="form-group">
     <%= f.label :date, class: "col-sm-2 control-label" %>
