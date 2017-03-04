@@ -26,6 +26,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'kaminari', '~> 0.16.3'
 gem 'rails_12factor'
 gem 'honeybadger', '~> 2.0'
+gem 'newrelic_rpm'
 
 
 
