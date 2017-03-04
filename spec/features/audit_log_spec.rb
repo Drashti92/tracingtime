@@ -28,6 +28,6 @@ describe 'AuditLog Feature' do
         visit audit_logs_path
 
         expect(current_path).to eq(root_path)
-    end
+  end
   end
 end

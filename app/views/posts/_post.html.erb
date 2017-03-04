@@ -1,11 +1,9 @@
 	<tr>
 		<td>
-			<%= post.overtime_request %>		
-		</td>
-		
-		
-		<td>
 			<%= post.id %>		
+		</td>
+		<td>
+			<%= post.overtime_request %>		
 		</td>
 		<td>
 			<%= post.date%>
@@ -17,7 +15,7 @@
 			<%= link_to truncate(post.rationale), post %>
     	</td>
     	<td>
-    		<%= status_label post.status %> 
+    		<%= post.status %> 
     	</td>
     	<td>
     		<%= link_to '', edit_post_path(post), id: "edit_#{post.id}", class: 'glyphicon glyphicon-pencil index-icons' if policy(post).update? %>
